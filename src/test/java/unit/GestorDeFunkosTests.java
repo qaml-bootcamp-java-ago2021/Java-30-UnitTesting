@@ -3,13 +3,32 @@ package unit;
 import com.funkos.Funko;
 import exceptions.FunkoNoEncontradoException;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class GestorDeFunkosTests extends ClaseBaseDePruebas{
 
+    @DataProvider
+    protected Object[][] listaDeFunkos(){
+        return new Object[][]{
+                {
+                    new Funko(){{
+                        setId(1);
+                        setNombre("Pacman");
+                    }}
+                },
+                {
+                    new Funko(){{
+                        setId(2);
+                        setNombre("Spiderman");
+                    }}
+                }
+        };
+    }
+
     //Gherkin language - Given, When, And, Then
-    @Test(description = "Verificar que se pueda agregar un Funko a la coleccion")
-    public void GivenUnaColeccionDeFunkos_WhenAgreagamosUnFunko_ThenTrueEsRegresado(){
+    @Test(dataProvider = "listaDeFunkos", description = "Verificar que se pueda agregar un Funko a la coleccion")
+    public void GivenUnaColeccionDeFunkos_WhenAgreagamosUnFunko_ThenTrueEsRegresado(Funko funko){
         // Arrange - Preparar
 
         // Act - Actuar
