@@ -80,6 +80,15 @@ public class GestorDeFunkosTests {
         Assert.assertTrue(resultadoActual, "El Funko no ha sido borrado.");
     }
 
+    @Test(expectedExceptions = FunkoNoEncontradoException.class)
+    public void GivenUnaColeccionDeFunkos_CuandoBuscamosUnIdInexistente_ThenUnaExcepcionEsArrojada() throws FunkoNoEncontradoException {
+        // Arrange - Preparar
+        GestorDeFunkos gestorDeFunkos = new GestorDeFunkos();
+
+        // Act - Actuar
+        gestorDeFunkos.leerFunkoPorId(3);
+    }
+
 
 
 }
