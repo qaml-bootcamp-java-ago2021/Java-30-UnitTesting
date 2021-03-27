@@ -1,3 +1,5 @@
+package com.funkos;
+
 public class Funko {
     private int id;
     private String nombre;

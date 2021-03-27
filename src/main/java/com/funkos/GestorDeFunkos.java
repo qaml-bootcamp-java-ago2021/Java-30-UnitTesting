@@ -1,3 +1,5 @@
+package com.funkos;
+
 import exceptions.FunkoNoEncontradoException;
 
 import java.util.ArrayList;
