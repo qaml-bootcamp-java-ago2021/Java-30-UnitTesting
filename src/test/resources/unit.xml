@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Testing Pyramid Tests">
+    <test name="unit">
+        <packages>
+            <package name="unit.*" />
+        </packages>
+    </test>
+    <test name="webapi">
+        <packages>
+            <package name="webapi.*" />
+        </packages>
+    </test>
+    <test name="ui">
+        <packages>
+            <package name="ui.*" />
+        </packages>
+    </test>
+</suite>
