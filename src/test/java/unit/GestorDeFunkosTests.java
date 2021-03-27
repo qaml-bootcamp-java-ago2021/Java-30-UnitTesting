@@ -4,6 +4,7 @@ import com.funkos.Funko;
 import com.funkos.GestorDeFunkos;
 import exceptions.FunkoNoEncontradoException;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -19,6 +20,12 @@ public class GestorDeFunkosTests {
         funko = new Funko();
         funko.setId(1);
         funko.setNombre("Pacman");
+    }
+
+    @AfterMethod
+    public void cleanup(){
+        gestorDeFunkos = null;
+        funko = null;
     }
 
     //Gherkin language - Given, When, And, Then
