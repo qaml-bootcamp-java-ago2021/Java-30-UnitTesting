@@ -4,18 +4,27 @@ import com.funkos.Funko;
 import com.funkos.GestorDeFunkos;
 import exceptions.FunkoNoEncontradoException;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class GestorDeFunkosTests {
+
+    GestorDeFunkos gestorDeFunkos;
+    Funko funko;
+
+    @BeforeMethod
+    public void setup(){
+        gestorDeFunkos = new GestorDeFunkos();
+
+        funko = new Funko();
+        funko.setId(1);
+        funko.setNombre("Pacman");
+    }
 
     //Gherkin language - Given, When, And, Then
     @Test
     public void GivenUnaColeccionDeFunkos_WhenAgreagamosUnFunko_ThenTrueEsRegresado(){
         // Arrange - Preparar
-        GestorDeFunkos gestorDeFunkos = new GestorDeFunkos();
-        Funko funko = new Funko();
-        funko.setId(1);
-        funko.setNombre("Pacman");
 
         // Act - Actuar
         boolean resultadoActual = gestorDeFunkos.agregarFunko(funko);
@@ -27,30 +36,18 @@ public class GestorDeFunkosTests {
     @Test
     public void GivenUnaColeccionConUnFunko_WhenLeemosUnFunko_ThenElMismoFunkoEsRetornado() throws FunkoNoEncontradoException {
         // Arrange - Preparar
-        GestorDeFunkos gestorDeFunkos = new GestorDeFunkos();
-
-        Funko funkoEsperado = new Funko();
-        funkoEsperado.setId(1);
-        funkoEsperado.setNombre("Pacman");
-
-        gestorDeFunkos.agregarFunko(funkoEsperado);
+        gestorDeFunkos.agregarFunko(funko);
 
         // Act - Actuar
-        Funko funkoActual = gestorDeFunkos.leerFunkoPorId(funkoEsperado.getId());
+        Funko funkoActual = gestorDeFunkos.leerFunkoPorId(funko.getId());
 
         // Assert - Afirmar
-        Assert.assertEquals(funkoActual, funkoEsperado, "Los Funkos no son los mismos.");
+        Assert.assertEquals(funkoActual, funko, "Los Funkos no son los mismos.");
     }
 
     @Test
     public void GivenUnaColeccionDeFunkos_WhenActualizamosElNombreDelFunko_ThenElNombreEsActualizado(){
         // Arrange - Preparar
-        GestorDeFunkos gestorDeFunkos = new GestorDeFunkos();
-
-        Funko funko = new Funko();
-        funko.setId(1);
-        funko.setNombre("Pacman");
-
         gestorDeFunkos.agregarFunko(funko);
         String nombreEsperado = "Batman";
 
@@ -65,12 +62,6 @@ public class GestorDeFunkosTests {
     @Test
     public void GivenUnaColeecionDeFunkos_WhenSeBorraUnFunko_ThenElFunkoEsBorrado(){
         // Arrange - Preparar
-        GestorDeFunkos gestorDeFunkos = new GestorDeFunkos();
-
-        Funko funko = new Funko();
-        funko.setId(1);
-        funko.setNombre("Pacman");
-
         gestorDeFunkos.agregarFunko(funko);
 
         // Act - Actuar
@@ -83,7 +74,6 @@ public class GestorDeFunkosTests {
     @Test(expectedExceptions = FunkoNoEncontradoException.class)
     public void GivenUnaColeccionDeFunkos_CuandoBuscamosUnIdInexistente_ThenUnaExcepcionEsArrojada() throws FunkoNoEncontradoException {
         // Arrange - Preparar
-        GestorDeFunkos gestorDeFunkos = new GestorDeFunkos();
 
         // Act - Actuar
         gestorDeFunkos.leerFunkoPorId(3);
