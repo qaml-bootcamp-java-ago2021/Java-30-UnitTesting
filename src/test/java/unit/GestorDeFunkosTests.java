@@ -62,4 +62,24 @@ public class GestorDeFunkosTests {
         Assert.assertEquals(nombreEsperado, funko.getNombre(), "Los Nombres de los Funkos no son los mismos.");
     }
 
+    @Test
+    public void GivenUnaColeecionDeFunkos_WhenSeBorraUnFunko_ThenElFunkoEsBorrado(){
+        // Arrange - Preparar
+        GestorDeFunkos gestorDeFunkos = new GestorDeFunkos();
+
+        Funko funko = new Funko();
+        funko.setId(1);
+        funko.setNombre("Pacman");
+
+        gestorDeFunkos.agregarFunko(funko);
+
+        // Act - Actuar
+        var resultadoActual = gestorDeFunkos.borrarFunko(funko.getId());
+
+        // Assert - Afirmar
+        Assert.assertTrue(resultadoActual, "El Funko no ha sido borrado.");
+    }
+
+
+
 }
