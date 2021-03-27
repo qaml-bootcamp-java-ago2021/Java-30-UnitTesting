@@ -9,7 +9,7 @@ import static io.restassured.RestAssured.given;
 import static webapi.EndPoints.CHISTE_ALEATORIO_URL;
 
 public class ChuckNorrisWebAPITests {
-    @Test(priority = 0)
+    @Test(priority = 0, groups = "Regression")
     public void ValidarQueElChisteTengaElNombreDeChuckNorries(){
         // Arrange
         String textoEsperado = "Chuck Norris";

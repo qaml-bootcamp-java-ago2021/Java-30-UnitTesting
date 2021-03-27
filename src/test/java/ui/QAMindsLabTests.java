@@ -20,7 +20,7 @@ public class QAMindsLabTests {
         driver.close();
     }
 
-    @Test
+    @Test(dependsOnGroups = "Regression")
     public void ValidarQueElTituloDeQAMindsLabEsCorrecto(){
         // Arrange
         String tituloEsperado = "QA Minds Lab";
