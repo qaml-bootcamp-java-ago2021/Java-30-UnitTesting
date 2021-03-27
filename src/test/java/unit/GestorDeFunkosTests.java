@@ -8,25 +8,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class GestorDeFunkosTests {
-
-    GestorDeFunkos gestorDeFunkos;
-    Funko funko;
-
-    @BeforeMethod
-    public void setup(){
-        gestorDeFunkos = new GestorDeFunkos();
-
-        funko = new Funko();
-        funko.setId(1);
-        funko.setNombre("Pacman");
-    }
-
-    @AfterMethod
-    public void cleanup(){
-        gestorDeFunkos = null;
-        funko = null;
-    }
+public class GestorDeFunkosTests extends ClaseBaseDePruebas{
 
     //Gherkin language - Given, When, And, Then
     @Test
