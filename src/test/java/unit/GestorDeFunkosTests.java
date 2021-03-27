@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 public class GestorDeFunkosTests extends ClaseBaseDePruebas{
 
     //Gherkin language - Given, When, And, Then
-    @Test
+    @Test(description = "Verificar que se pueda agregar un Funko a la coleccion")
     public void GivenUnaColeccionDeFunkos_WhenAgreagamosUnFunko_ThenTrueEsRegresado(){
         // Arrange - Preparar
 
@@ -19,7 +19,7 @@ public class GestorDeFunkosTests extends ClaseBaseDePruebas{
         Assert.assertTrue(resultadoActual);
     }
 
-    @Test
+    @Test(timeOut = 500)
     public void GivenUnaColeccionConUnFunko_WhenLeemosUnFunko_ThenElMismoFunkoEsRetornado() throws FunkoNoEncontradoException {
         // Arrange - Preparar
         gestorDeFunkos.agregarFunko(funko);
@@ -31,7 +31,7 @@ public class GestorDeFunkosTests extends ClaseBaseDePruebas{
         Assert.assertEquals(funkoActual, funko, "Los Funkos no son los mismos.");
     }
 
-    @Test
+    @Test(enabled = true)
     public void GivenUnaColeccionDeFunkos_WhenActualizamosElNombreDelFunko_ThenElNombreEsActualizado(){
         // Arrange - Preparar
         gestorDeFunkos.agregarFunko(funko);

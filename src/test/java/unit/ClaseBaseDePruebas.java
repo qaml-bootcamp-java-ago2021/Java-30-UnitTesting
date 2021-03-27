@@ -24,7 +24,7 @@ public class ClaseBaseDePruebas {
         funko.setNombre("Pacman");
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void cleanup(){
         gestorDeFunkos = null;
         funko = null;
